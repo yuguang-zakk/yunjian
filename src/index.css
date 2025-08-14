@@ -1,0 +1,432 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Chinese-inspired font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  /* Chinese-inspired font for headers and branding */
+  .font-chinese {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 400;
+  }
+}
+
+@layer components {
+  /* Ancient Chinese Cloud Pattern Background */
+  .bg-cloud-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C7A14A' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Ink Ripple Effect for Hover States */
+  .ink-ripple {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ink-ripple::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(47, 165, 142, 0.08);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+
+  .ink-ripple:hover::before {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Hairline Dividers with Brass Gold */
+  .hairline-divider {
+    height: 0.5px;
+    background: linear-gradient(90deg, transparent, #C7A14A, transparent);
+    filter: blur(0.25px);
+    opacity: 0.6;
+  }
+
+  /* Pavilion-style Shadows */
+  .shadow-pavilion {
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.08),
+      0 2px 6px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  /* Custom scrollbar */
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Custom transitions */
+  .transition-smooth {
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Focus styles for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-jade;
+  }
+
+  /* Animation for loading states */
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-200;
+  }
+
+  .hover-lift:hover {
+    @apply transform -translate-y-0.5 shadow-lg;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply transform -translate-y-1 shadow-xl;
+  }
+
+  /* Button press effect */
+  .btn-press:active {
+    @apply transform scale-95;
+  }
+
+  /* Glassmorphism effect */
+  .glass {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, #2FA58E, #C7A14A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Ancient Chinese Calligraphy-inspired Elements */
+  .brush-stroke {
+    position: relative;
+  }
+
+  .brush-stroke::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #C7A14A, transparent);
+    opacity: 0.6;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .brush-stroke:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Zen-inspired spacing and rhythm */
+  .zen-spacing > * + * {
+    margin-top: 1.5rem;
+  }
+
+  /* Traditional Chinese color accents */
+  .accent-jade {
+    color: #2FA58E;
+  }
+
+  .accent-brass {
+    color: #C7A14A;
+  }
+
+  .accent-terracotta {
+    color: #D24C3E;
+  }
+
+  /* Subtle texture overlay */
+  .paper-texture {
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(199, 161, 74, 0.15) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+
+  /* Meditation-inspired animations */
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  .animate-breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  /* Flowing water-like transitions */
+  .flow-transition {
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Ink wash effect for backgrounds */
+  .ink-wash {
+    background: radial-gradient(ellipse at center, rgba(47, 165, 142, 0.05) 0%, transparent 70%);
+  }
+}
+
+@layer utilities {
+  /* Custom spacing based on 8px system */
+  .space-unit { @apply p-2; }  /* 8px */
+  .space-unit-2 { @apply p-4; }  /* 16px */
+  .space-unit-3 { @apply p-6; }  /* 24px */
+  .space-unit-4 { @apply p-8; }  /* 32px */
+  .space-unit-5 { @apply p-10; } /* 40px */
+  .space-unit-6 { @apply p-12; } /* 48px */
+
+  /* Custom width utilities */
+  .w-18 { width: 4.5rem; }  /* 72px - collapsed sidebar */
+  .w-70 { width: 17.5rem; } /* 280px - expanded sidebar */
+
+  /* Custom shadow utilities */
+  .shadow-soft {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .shadow-medium {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .shadow-strong {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+  }
+
+  /* Custom border radius for design system */
+  .rounded-system {
+    border-radius: 10px;
+  }
+
+  /* Animation delays for staggered effects */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+
+  /* Interactive states */
+  .interactive {
+    @apply transition-all duration-200 ease-out cursor-pointer;
+  }
+
+  .interactive:hover {
+    @apply transform scale-105;
+  }
+
+  .interactive:active {
+    @apply transform scale-95;
+  }
+
+  /* Loading shimmer effect */
+  @keyframes shimmer {
+    0% {
+      background-position: -468px 0;
+    }
+    100% {
+      background-position: 468px 0;
+    }
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 400% 100%;
+    animation: shimmer 1.2s ease-in-out infinite;
+  }
+
+  /* Custom color utilities matching design system */
+  .text-charcoal { color: #2C2C2C; }
+  .text-gray-secondary { color: #6D6A6A; }
+  .bg-rice-paper { background-color: #FAF7F2; }
+  .text-jade { color: #2FA58E; }
+  .bg-jade { background-color: #2FA58E; }
+  .text-brass { color: #C7A14A; }
+  .bg-brass { background-color: #C7A14A; }
+  .text-terracotta { color: #D24C3E; }
+  .bg-terracotta { background-color: #D24C3E; }
+
+  /* Responsive utilities for two-panel layout */
+  @media (max-width: 768px) {
+    .mobile-stack {
+      @apply flex-col;
+    }
+    
+    .mobile-overlay {
+      @apply fixed inset-0 z-50;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .tablet-adaptive {
+      @apply relative;
+    }
+  }
+
+  /* Accessibility utilities */
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    @apply sr-only;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .shadow-soft {
+      box-shadow: 0 0 0 2px currentColor;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .transition-smooth,
+    .transition-all,
+    .animate-pulse-soft,
+    .ink-ripple::before,
+    .flow-transition {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Ancient Chinese aesthetic utilities */
+  .harmony-spacing {
+    @apply space-y-6;
+  }
+
+  .balance-layout {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  .wisdom-text {
+    @apply text-gray-secondary leading-relaxed;
+  }
+
+  .scholar-focus {
+    @apply ring-2 ring-jade ring-opacity-20 border-jade;
+  }
+
+  /* Zen-inspired layout utilities */
+  .zen-container {
+    @apply max-w-6xl mx-auto px-6;
+  }
+
+  .meditation-spacing {
+    @apply py-12 space-y-8;
+  }
+
+  /* Traditional Chinese proportions */
+  .golden-ratio {
+    aspect-ratio: 1.618;
+  }
+
+  .square-harmony {
+    aspect-ratio: 1;
+  }
+
+  /* Brush painting-inspired borders */
+  .brush-border {
+    border-image: linear-gradient(90deg, transparent, #C7A14A, transparent) 1;
+  }
+
+  /* Flowing layout utilities */
+  .river-flow {
+    @apply flex flex-wrap gap-4 items-center;
+  }
+
+  .mountain-stack {
+    @apply space-y-4;
+  }
+
+  /* Contemplative color schemes */
+  .morning-mist {
+    background: linear-gradient(135deg, #FAF7F2 0%, #F5F2ED 100%);
+  }
+
+  .evening-jade {
+    background: linear-gradient(135deg, #2FA58E 0%, #268A73 100%);
+  }
+
+  .autumn-brass {
+    background: linear-gradient(135deg, #C7A14A 0%, #B8942F 100%);
+  }
+}
