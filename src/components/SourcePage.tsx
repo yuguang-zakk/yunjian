@@ -1,23 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  ArrowLeft, 
-  FileText, 
-  Video, 
-  Globe, 
-  File, 
-  BookOpen,
-  Play,
-  Download,
-  Share2,
-  MoreVertical,
-  Plus,
-  Waveform,
-  Map,
-  Clock,
-  FileIcon,
-  Eye,
-  Bookmark
-} from 'lucide-react';
+import { ArrowLeft, FileText, Video, Globe, File, BookOpen, Play, Download, Share2, MoreVertical, Plus, AudioWaveform as Waveform, Map, Clock, FileIcon, Eye, Bookmark } from 'lucide-react';
 import { SourceCard, StudyGuide } from '../types';
 
 interface SourcePageProps {
